@@ -58,8 +58,7 @@ void mergeSort(int a[], int l, int r){
 		mergeSort(a, l, m);
 		mergeSort(a, m+1, r);
 		merge(a, l, m, r);
-	}
-	
+	}	
 }
 
 
@@ -71,7 +70,7 @@ int main(){
 	}
 	printf("\n");
 
-	mergeSort(A, 0, sizeof(A)/sizeof(A[0]));
+	mergeSort(A, 0, sizeof(A)/sizeof;
 	
 	for(int i=0; i < sizeof(A)/sizeof(A[0]); i++){
 		printf("%d ", A[i]);
