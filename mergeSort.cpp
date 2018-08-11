@@ -31,7 +31,7 @@ void merge(int a[], int l, int m, int r){
 	for(int j=0; j<n2; j++)
 		R[j] = a[m+1+j];
 
-	i=0; //1st array index
+	i=0;//1st array index
 	j=0;//2nd array index
 	k=l;//merge array index
 
@@ -61,6 +61,49 @@ void mergeSort(int a[], int l, int r){
 	}	
 }
 
+void merge2(int a[], int L[], int llen, int R[], int rlen){
+	int i,j,k;
+	i = 0; 
+	j = 0;
+	k = 0;
+
+	while(i<llen && j<rlen){
+		if(L[i]<R[j])
+			a[k++] = L[i++];
+		else
+			a[k++] = R[j++];
+	}
+	while(i<llen)
+		a[k++] = L[i++];
+	while(j<rlen)
+		a[k++] = R[j++];
+}
+
+void mergeSort2(int a[], int len){
+	if(len<2)
+		return;
+
+	int mid = len/2;
+	int L[mid];
+	int R[len-mid];
+
+	for(int i=0; i<mid; i++){
+		L[i] = a[i];
+		printf("%d ", L[i]);
+	}
+		
+	for(int i=mid; i<len; i++){
+		R[i-mid] = a[i];
+		printf("%d ", R[i-mid]);
+	}
+	
+	printf("\n");
+
+
+	mergeSort2(L, mid);
+	mergeSort2(R, len-mid);
+	merge2(a, L, mid, R, len-mid);
+}
 
 int main(){
 	int A[] = {7,8,9,5,3,4,6,2,1};
@@ -70,10 +113,23 @@ int main(){
 	}
 	printf("\n");
 
-	mergeSort(A, 0, sizeof(A)/sizeof;
+	mergeSort(A, 0, sizeof(A)/sizeof(A[0]));
 	
 	for(int i=0; i < sizeof(A)/sizeof(A[0]); i++){
 		printf("%d ", A[i]);
+	}
+	printf("\n");
+
+	
+	int B[] = {7,8,9,5,3,4,6,2,1};	
+	for(int i=0; i < 9; i++){
+		printf("%d ", B[i]);
+	}
+	printf("\n");
+
+	mergeSort2(B, 9);
+	for(int i=0; i < 9; i++){
+		printf("%d ", B[i]);
 	}
 	printf("\n");
 }
